@@ -13,6 +13,8 @@ app.get('/users', (request, response) => { //recebe preciso passar esses 2 param
 });
 app.listen(3333);
 
+//teste
+
 //REQ / RESP
 //localhost:3333
 
