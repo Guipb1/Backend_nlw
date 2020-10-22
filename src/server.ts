@@ -1,19 +1,22 @@
 import express from 'express';
+import path from 'path';
+import cors from 'cors';
+import 'express-async-errors';
 import './database/connection';
+import routes from './routes';
+import errorHandler from './errors/handler';
 
 const app = express(); // ajuda a lidar com as requisicoes e respostas
 
+app.use(cors());
 app.use(express.json()); //dizer ao express que estamos utlizando jsnon
+app.use(routes);
+app.use('/uploads', express.static(path.join(__dirname, '..','uploads')))
+app.use(errorHandler);
 
-// criando uma rota
-// users = recurso
-app.get('/users', (request, response) => { //recebe preciso passar esses 2 parametros 
-    return response.json({message:'hello world'}); 
-
-});
 app.listen(3333);
 
-//teste
+    //teste
 
 //REQ / RESP
 //localhost:3333
